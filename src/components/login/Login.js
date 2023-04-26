@@ -1,10 +1,12 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import { auth, googleProvider } from '../../dbconfig/firebase'
 import { signInWithPopup } from 'firebase/auth';
 import { Context } from '../../App';
+import { useContext } from 'react';
 
 const Login = () => {
   const [isAuth, setIsAuth] = useContext(Context)
+
 
   const signIn = async (auth, provider) => {
     try {
