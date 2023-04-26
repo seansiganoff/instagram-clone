@@ -17,9 +17,7 @@ const Home = () => {
     
     useEffect(() => {
         
-        let count = 0;
-        count++;
-        console.log(count)
+        
         listAll(imagesListRef).then((response) => {
           response.items.forEach((item) => {
             getDownloadURL(item).then(url => {

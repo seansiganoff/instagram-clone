@@ -13,15 +13,15 @@ export const Context = React.createContext();
 
 
 function App() {
-  const [isAuth, setIsAuth] = useState(true);
+  const [isAuth, setIsAuth] = useState();
 
 const RestrictedRoute = () => {
-  return <>{isAuth ? <Outlet /> : <Outlet /> }</> //replace the second outlet with Navigate to="/login" for auth to work
+  return <>{isAuth ? <Outlet /> : <Navigate to="/login" /> }</> //replace the second outlet with Navigate to="/login" for auth to work
 
 }
 
 const PrivateRoute = () => {
-  return <>{!isAuth  ? <Outlet />  : <Outlet />  }</>
+  return <>{!isAuth  ? <Outlet />  :  <Navigate to="/" />  }</>
 }
 
    
@@ -39,7 +39,7 @@ const PrivateRoute = () => {
             
           </Route>
           <Route element={<PrivateRoute />}>
-            <Route element={<Login />} />
+            <Route path="/login" element={<Login />} />
           </Route>
         </Routes>
         <Footer />
