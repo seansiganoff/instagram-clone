@@ -3,11 +3,10 @@ import './App.css';
 import Home from './components/home/Home';
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import Login from './components/login/Login';
-import React, {useContext, useState}from 'react';
+import React, {useState}from 'react';
 import { auth } from './dbconfig/firebase';
 import Post from './components/post/Post';
 import Footer from './components/footer/Footer';
-import Nav from './components/nav/Nav';
 
 export const Context = React.createContext();
 
@@ -31,20 +30,19 @@ const PrivateRoute = () => {
       
       <BrowserRouter>
       <Context.Provider value={[isAuth, setIsAuth]}>
-        <Nav />
         <Routes>
           <Route element={<RestrictedRoute />}>
             <Route path='/' element={<Home />} />
             <Route path='/post' element={<Post />} />
-            
           </Route>
           <Route element={<PrivateRoute />}>
             <Route path="/login" element={<Login />} />
           </Route>
         </Routes>
-        <Footer />
+        {isAuth && <Footer />}
         </Context.Provider>
       </BrowserRouter>
+
     </div>
   );
 }

@@ -29,14 +29,14 @@ const Home = () => {
       //testing
     
       return (
-        
-        <div>
-            {imageUrls.map((url, i) => (
-                <div key={i}>
-                    <img src={url} style={{width: '300px'}} />;
-                </div>
-            ))}
-        </div>
+          <div className='home'>
+            <h1>Instagram Clone</h1>
+              {imageUrls.map((url, i) => (
+                  <div key={i}>
+                      <img src={url} style={{width: '100%'}} />
+                  </div>
+              ))}
+          </div>
         
       )
 }

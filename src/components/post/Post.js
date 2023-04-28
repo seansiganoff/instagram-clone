@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import './post.css';
 import {ref, uploadBytes, getDownloadURL} from 'firebase/storage'
 import { storage } from '../../dbconfig/firebase';
-import { v4 } from 'uuid'
+import { v4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
+import Home from '../home/Home';
 
 
 
@@ -10,8 +12,12 @@ import { v4 } from 'uuid'
 const Post = () => {
   const [imageUpload, setImageUpload] = useState(null);
   const [imageUrls, setImageUrls] = useState([]);
+  // navigate to a different page
+  const navigate = useNavigate();
 
-  const imagesListRef = ref(storage, "images/");
+
+
+
   const uploadFile = () => {
     if (imageUpload == null) return;
     const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
@@ -20,6 +26,9 @@ const Post = () => {
         setImageUrls((prev) => [...prev, url]);
       });
     });
+    setTimeout(() => {
+      navigate("/");
+    }, 2000)
   };
 
   return (

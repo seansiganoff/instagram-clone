@@ -3,9 +3,29 @@
 .footer {
     width: 100%;
     height: 10vh;
-    background-color: beige;
     display: flex;
-    text-align: center;
+    color: white;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    background-image: linear-gradient(to bottom right, rgb(212, 0, 255), rgb(255, 98, 0), rgb(255, 255, 0));
+    position: sticky;
+    z-index: 100;
+    bottom: 0;
+    margin: 0 auto;
+}
+
+.icons {
+    width: 100px;
+    height: 100px;
+}
+
+
+
+a:link {
+    text-decoration: none;
+    color: white;
+}
+
+a:visited {
+    color: white;
 }
