@@ -12,16 +12,18 @@ export const Context = React.createContext();
 
 
 function App() {
-  const [isAuth, setIsAuth] = useState();
+  const [isAuth, setIsAuth] = useState(false);
 
-const RestrictedRoute = () => {
-  return <>{isAuth ? <Outlet /> : <Navigate to="/login" /> }</> //replace the second outlet with Navigate to="/login" for auth to work
 
-}
+  
+  const RestrictedRoute = () => {
+    return <>{isAuth ? <Outlet /> : <Navigate to="/login" /> }</> //replace the second outlet with Navigate to="/login" for auth to work
 
-const PrivateRoute = () => {
-  return <>{!isAuth  ? <Outlet />  :  <Navigate to="/" />  }</>
-}
+  }
+  //keeps the client from getting to the home page without logging in
+  const PrivateRoute = () => {
+    return <>{!isAuth  ? <Outlet />  :  <Navigate to="/" />  }</>
+  }
 
    
   
